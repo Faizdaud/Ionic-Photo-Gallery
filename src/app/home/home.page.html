@@ -1,20 +1,72 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      <center>
+      Gallery
+    </center>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+ 
+    <!-- <ion-button (click)="selectImage()">Capture photo</ion-button> -->
+    <ion-row>
+      <ion-col size="6" *ngFor="let file of images">
+        <ion-item >
+          <ion-row>
+
+            <ion-col size="12">
+              <ion-img [src]="file.data" ></ion-img>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-label>
+                {{file.name}}
+              </ion-label>
+            </ion-col>
+
+            <ion-col size="12">
+                <ion-button color="danger" (click)="deleteImage(file)">
+                  <ion-icon name="trash-outline"></ion-icon>
+                </ion-button>
+        
+                <ion-button color="success" (click)="shareImage(file)">
+                  <ion-icon name="share-social-outline"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+
+          </ion-row>
+          
+        
+            
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+
+      <ion-fab-button (click)="selectImage()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    
+    <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+
+      <ion-fab-button color="danger" (click)="deleteImage()">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+
+      <ion-fab-button color="success" (click)="shareImage()">
+        <ion-icon name="share-social-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  -->
 </ion-content>
